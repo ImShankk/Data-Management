@@ -1,0 +1,26 @@
+[
+    {
+        "title": "Valorant",
+        "developer": "Riot Games",
+        "year": 2020,
+        "players": 10
+    },
+    {
+        "title": "Hogwarts Legacy",
+        "developer": "Avalanche",
+        "year": 2023,
+        "players": 1
+    },
+    {
+        "title": "Fifa 23",
+        "developer": "EA Sports",
+        "year": 2022,
+        "players": 8
+    },
+    {
+        "title": "Worldle",
+        "developer": "Applax",
+        "year": 2018,
+        "players": 1
+    }
+]
