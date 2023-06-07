@@ -17,7 +17,7 @@ usingUser = ""
 
 # Search for user
 def userSearch():
-    # Use linear search since the array is small
+    # Use binary search since the array is small
     userLocation = helper.diffBinary(userInformation, "username", usingUser)
     # The bookmarked or the games the user stars/favourites
     starredList = userInformation[userLocation]["bookmarked"]
@@ -109,8 +109,7 @@ while mainLoop:
     print("4: Select Data to add to a favourites/bookmarks")
     print("5: Remove Data from favourites/bookmarks")
     print("6: Display the favourites list/bookmarks")
-    print("7: Exit and Logout")
-    print("")
+    print("7: Exit and Logout\n")
 
     # Option Select
     optionSelect = input("Please Select One Of The Following Options: ")
@@ -139,4 +138,32 @@ while mainLoop:
     # Sort Data on Criteria
     elif optionSelect == "3":
         # Sort on Criteria
-        criteriaSort = input("What criteria would you like to sort by?")
+        criteriaSort = input("What criteria would you like to sort by? ")
+        located = False
+        #LOOP TO SEARCH
+        if criteriaSort in ['title', 'developer', 'year', 'players']:
+            #BUBBLE SORT TO SORT THE FOLLOWING CRITERIA
+            helper.bubbleSortTwo(videoGames, criteriaSort)
+            for game in videoGames:
+                print(game["title"], ",", game["developer"], ",", game["year"], ",", game["players"])
+
+    #Select Data to add to a bookmark or starred list
+    elif optionSelect == "4":
+        addInList = input("What videogame would you like to add to your favourite list? ")
+        #FOR LOOP
+        for game in videoGames:
+            if addInList == game["title"]:
+                favouriteList.append(game)
+                updateJson()
+                print("The videogame has been added into your favourite list.")
+
+    #Remove Data from your favourites list
+    elif optionSelect == "5":
+        removeFromList = input("What videogame would you like to remove from your favourites list? ")
+        #For Loop
+        for game in videoGames:
+            if removeFromList == favouriteList[0]["title"]:
+                favouriteList.pop()
+                updateJson()
+                print("The videogame has been removed from your favourites list.")
+
