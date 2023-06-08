@@ -205,7 +205,7 @@ while mainLoop:
         #first check if there is anything in her favourite list
         #If the lenght of the list is empty nothing is there
         if len(favouriteList) == 0:
-            print("There doesn't seem to be anything insdie of the favourites list.")
+            print("There doesn't seem to be anything inside of the favourites list.")
         else:
             print("Your Favourites List: \n")
             for game in favouriteList:
