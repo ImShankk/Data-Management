@@ -68,9 +68,6 @@ def startProgram():
                 print("Congratulations! You Have Successfully Created An Account!!!")
                 usingUser = username
                 favouriteList = userSearch()
-                mainLoop = True
-                startProgram()
-                break
 
         elif menuOption == "2":
             # Find the username and password
@@ -112,11 +109,11 @@ updateJson()
 while mainLoop:
     # Option List
     print("\nDATA MANAGEMENT MAIN MENU")
-    print("1: Display All Data")
-    print("2: Display Data Based On Certain Criteria")
-    print("3: Sort Data Based On Criteria")
-    print("4: Select Data to add to a favourites/bookmarks")
-    print("5: Remove Data from favourites/bookmarks")
+    print("1: Display All Videogames")
+    print("2: Display Videogames Based On Developer")
+    print("3: Sort Videogames Based On Criteria")
+    print("4: Select Videogames to add to a favourites/bookmarks")
+    print("5: Remove Videogames from favourites/bookmarks")
     print("6: Display the favourites list/bookmarks")
     print("7: Exit and Logout\n")
 
@@ -180,8 +177,6 @@ while mainLoop:
                 favouriteList.append(game)
                 updateJson()
                 print("The videogame has been added into your favourite list.")
-                #break the for loop
-                break
 
         #Not found
         if not located:
@@ -200,7 +195,6 @@ while mainLoop:
                 favouriteList.remove(game)
                 updateJson()
                 print("The videogame has been removed from your favourites list.")
-                break
 
         #If not found
         if not located:
@@ -230,7 +224,6 @@ while mainLoop:
         print("You have logged out and exited the program. ")
         #update the Json file
         updateJson()
-        break
 
     #in case the user selects an invalid option
     else:
