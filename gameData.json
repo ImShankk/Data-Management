@@ -22,5 +22,41 @@
         "developer": "Applax",
         "year": 2018,
         "players": 1
+    },
+    {
+        "title": "Apex Legends",
+        "developer": "Respawn Entertainments",
+        "year": 2019,
+        "players": 3
+    },
+    {
+        "title": "Fortnite",
+        "developer": "Epic Games",
+        "year": 2017,
+        "players": 4
+    },
+    {
+        "title": "Minecraft",
+        "developer": "Mojang",
+        "year": 2011,
+        "players": 100
+    },
+    {
+        "title": "Paladins",
+        "developer": "Hi Rez Studios",
+        "year": 2016,
+        "players": 10
+    },
+    {
+        "title": "Overwatch",
+        "developer": "Blizzard Entertainment",
+        "year": 2016,
+        "players": 12
+    },
+    {
+        "title": "League of Legends",
+        "developer": "Riot Games",
+        "year": 2009,
+        "players": 10
     }
 ]
