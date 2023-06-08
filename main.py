@@ -12,8 +12,17 @@ with open("UserInf.json", "r") as userInfoFile:
     userInformation = json.loads(dataStringUser)
 
 # User variables
-favouriteList = []
 usingUser = ""
+
+#display videogames
+def displayVideogames():
+    for game in videoGames:
+        print("Title: ", game["title"])
+        print("Developer: ", game["developer"])
+        print("Year: ", game["year"])
+        print("Number of Players: ", game["players"])
+        #Space(empty line)
+        print()
 
 # Search for user
 def userSearch():
@@ -117,9 +126,8 @@ while mainLoop:
     # Displaying All Data
     if optionSelect == "1":
         # LOOP TO SHOW DATA
-        for game in videoGames:
-            print(game["title"], ",", game["developer"], ",", game["year"], ",", game["players"])
-
+        displayVideogames()
+        
     # Display based on certain criteria
     elif optionSelect == "2":
         # CRITERIA FINDER
@@ -130,7 +138,12 @@ while mainLoop:
         for game in videoGames:
             if criteriaLookingfor.lower() == game["developer"].lower():
                 located = True
-                print(game["title"], ",", game["developer"], ",", game["year"], ",", game["players"])
+                print("Title: ", game["title"])
+                print("Developer: ", game["developer"])
+                print("Year: ", game["year"])
+                print("Number of Players: ", game["players"])
+                #Space(empty line)
+                print()
 
         # NOT FOUND
         if not located:
@@ -148,8 +161,7 @@ while mainLoop:
             helper.bubbleSortTwo(videoGames, criteriaSort)
             #located
             located = True
-            for game in videoGames:
-                print(game["title"], ",", game["developer"], ",", game["year"], ",", game["players"])
+            displayVideogames()
         
         #Not located
         if not located:
@@ -201,9 +213,15 @@ while mainLoop:
         if len(favouriteList) == 0:
             print("There doesn't seem to be anything insdie of the favourites list.")
         else:
-            print("Your Favourites List")
+            print("Your Favourites List: \n")
             for game in favouriteList:
-                print(game["title"], ",", game["developer"], ",", game["year"], ",", game["players"])
+                    print("Title: ", game["title"])
+                    print("Developer: ", game["developer"])
+                    print("Year: ", game["year"])
+                    print("Number of Players: ", game["players"])
+                    #Space(empty line)
+                    print()
+
 
     #EXIT AND LOGOUT
     elif optionSelect == "7":
