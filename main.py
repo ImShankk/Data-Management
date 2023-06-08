@@ -37,10 +37,10 @@ def startProgram():
     registerLogin = True
     while registerLogin:
         # MAIN MENU
-        print("Select One Of The Following")
+        print("\nSelect One Of The Following")
         print("Enter 1 to register and create an account!!! ")
         print("Enter 2 to login to an existing account!!!")
-        print("Enter 3 to exit the program")
+        print("Enter 3 to exit the program\n")
 
         # User input for menu selection
         menuOption = input("Please Select A Menu Option: ")
@@ -102,7 +102,7 @@ updateJson()
 # Options for the program itself
 while mainLoop:
     # Option List
-    print("DATA MANAGEMENT MAIN MENU")
+    print("\nDATA MANAGEMENT MAIN MENU")
     print("1: Display All Data")
     print("2: Display Data Based On Certain Criteria")
     print("3: Sort Data Based On Criteria")
@@ -125,6 +125,7 @@ while mainLoop:
         # CRITERIA FINDER
         criteriaLookingfor = input("Please Enter the Developer of The Game: ")
         located = False
+
         # LOOP TO SEARCH
         for game in videoGames:
             if criteriaLookingfor.lower() == game["developer"].lower():
@@ -140,30 +141,79 @@ while mainLoop:
         # Sort on Criteria
         criteriaSort = input("What criteria would you like to sort by? ")
         located = False
+
         #LOOP TO SEARCH
         if criteriaSort in ['title', 'developer', 'year', 'players']:
             #BUBBLE SORT TO SORT THE FOLLOWING CRITERIA
             helper.bubbleSortTwo(videoGames, criteriaSort)
+            #located
+            located = True
             for game in videoGames:
                 print(game["title"], ",", game["developer"], ",", game["year"], ",", game["players"])
+        
+        #Not located
+        if not located:
+            print("Please select a viable criteria")
 
     #Select Data to add to a bookmark or starred list
     elif optionSelect == "4":
         addInList = input("What videogame would you like to add to your favourite list? ")
+        located = False
+
         #FOR LOOP
         for game in videoGames:
             if addInList == game["title"]:
+                #found it
+                located = True
                 favouriteList.append(game)
                 updateJson()
                 print("The videogame has been added into your favourite list.")
+                #break the for loop
+                break
 
-    #Remove Data from your favourites list
+        #Not found
+        if not located:
+            print("There doesn't seem to be a videogame by that name. ")
+
+    # Remove Data from your favourites list
     elif optionSelect == "5":
         removeFromList = input("What videogame would you like to remove from your favourites list? ")
-        #For Loop
-        for game in videoGames:
-            if removeFromList == favouriteList[0]["title"]:
-                favouriteList.pop()
+        located = False
+
+        # For Loop
+        for game in favouriteList:
+            if removeFromList == game["title"]:
+                #FOUND
+                located = True
+                favouriteList.remove(game)
                 updateJson()
                 print("The videogame has been removed from your favourites list.")
+                break
 
+        #If not found
+        if not located:
+            print("The videogame is not in your favourites list.")
+
+    #Display the favourites list
+    elif optionSelect == "6":
+        #first check if there is anything in her favourite list
+        #If the lenght of the list is empty nothing is there
+        if len(favouriteList) == 0:
+            print("There doesn't seem to be anything insdie of the favourites list.")
+        else:
+            print("Your Favourites List")
+            for game in favouriteList:
+                print(game["title"], ",", game["developer"], ",", game["year"], ",", game["players"])
+
+    #EXIT AND LOGOUT
+    elif optionSelect == "7":
+        #end the main loop
+        mainLoop = False
+        print("You have logged out and exited the program. ")
+        #update the Json file
+        updateJson()
+        break
+
+    #in case the user selects an invalid option
+    else:
+        print("That is not a valid option. Please select a viable option.")
